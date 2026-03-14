@@ -12,6 +12,17 @@
 
   --color-highlight: #FFAE00;
 
+  --color-succes-01: #00A429;
+  --color-succes-02: #00C532;
+  --color-succes-03: #B0F4C1;
+
+  --color-warning-01: #E66800;
+  --color-warning-02: #FF7300;
+  --color-warning-03: #FFD4B0;
+  
+  --color-error-01: #BF2600;
+  --color-error-02: #FF3300;
+  --color-error-03: #FFE0D9;
 
   --color-bl-01: #E6F2FF;
   --color-bl-02: #D9EBFF;
@@ -192,7 +203,7 @@
 }
 
 @layer components {
-  .mycontainer { @apply container right-0 left-0 mx-auto lg:px-8 md:px-28 px-8 xl:px-24 transition-all duration-300;}
+  .mycontainer { @apply container mx-auto max-w-7xl w-full md:px-12 lg:px-16 xl:px-18 py-8;}
 
   .h1-regular { @apply text-[56px] leading-[72px] font-normal; }
   .h1-semibold { @apply text-[56px] leading-[72px] font-semibold; }

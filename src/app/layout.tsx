@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { poppins } from "@/shared/utils/font";
 import "@/styles/globals.css"
-import Navbar from "@/shared/components/Navbar";
-import Footer from "@/shared/components/Footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",

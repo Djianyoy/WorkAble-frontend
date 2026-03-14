@@ -5,10 +5,7 @@ import React from 'react'
 const Page = () => {
   return (
     <main>
-
-      <Navbar/>
-      <Footer/>
-      
+      <h1> </h1>
     </main>
   )
 }
