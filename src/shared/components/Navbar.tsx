@@ -8,7 +8,7 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <nav className={'fixed right-0 left-0 top-0 z-100 transition-transform duration-300 shadow-md shadow-[#007BFF40]'}>
+    <nav className={'bg-white fixed right-0 left-0 top-0 z-10 transition-transform duration-300 shadow-md shadow-[#007BFF40]'}>
       <div className='px-20 py-6 flex items-center justify-between'>
         <div className='w-40 h-11'>
           <Image src={"/Logo.webp"} alt='LogoNav' width={500} height={500}/>
