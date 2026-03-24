@@ -16,7 +16,7 @@ export const TOTAL_STEPS = 6
 
 
 export default function OnboardingContainer() {
-  const { currentStep, prevStep, getProgress } = useOnboardingStore()
+  const { currentStep, getProgress } = useOnboardingStore()
 
   const renderStep = () => {
     switch (currentStep) {
@@ -38,22 +38,12 @@ export default function OnboardingContainer() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
-        {/* Header */}
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
+      <div className="max-w-xl mx-auto">
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
             {/* Back button (hidden on first step) */}
-            {currentStep > 1 && (
-              <button
-                onClick={prevStep}
-                className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <ChevronLeft className="w-5 h-5" />
-                <span className="text-sm font-medium">Kembali</span>
-              </button>
-            )}
-
+            
           </div>
 
           {/* Progress bar
@@ -61,14 +51,10 @@ export default function OnboardingContainer() {
         </div>
 
         {/* Step content */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-4 ">
           {renderStep()}
         </div>
 
-        {/* Footer info */}
-        <p className="text-center text-sm text-gray-500 mt-6">
-          Informasi kamu aman bersama kami 🔒
-        </p>
       </div>
     </div>
   )
