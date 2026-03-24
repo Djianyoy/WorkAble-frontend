@@ -1,7 +1,5 @@
-// lib/validations/onboarding.ts
 import { z } from 'zod'
 
-// Step 1: Basic Info
 export const step1Schema = z.object({
   fullName: z
     .string()
@@ -15,7 +13,6 @@ export const step2Schema = z.object({
   age: z
     .string()
     .min(1, 'Usia wajib dipilih')
-    .refine((val) => !isNaN(Number(val)), 'Usia harus berupa angka'),
 })
 
 // Step 3: Location

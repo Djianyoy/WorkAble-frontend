@@ -3,7 +3,7 @@
 
 import { useOnboardingStore } from '@/lib/stores/onboarding'
 import { Step1 } from '../components/Step1'
-// import { Step2 } from '@/components/onboarding/Step2'
+import { Step2 } from '../components/Step2'
 // import { Step3 } from '@/components/onboarding/Step3'
 // import { Step4 } from '@/components/onboarding/Step4'
 // import { Step5 } from '@/components/onboarding/Step5'
@@ -23,7 +23,7 @@ export default function OnboardingContainer() {
       case 1:
         return <Step1 />
       case 2:
-    //     return <Step2 />
+        return <Step2 />
     //   case 3:
     //     return <Step3 />
     //   case 4:
@@ -38,20 +38,15 @@ export default function OnboardingContainer() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 mt-22">
       <div className="max-w-xl mx-auto">
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            {/* Back button (hidden on first step) */}
-            
-          </div>
 
           {/* Progress bar
           <Progress value={getProgress()} className="h-2" /> */}
         </div>
 
-        {/* Step content */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-4 ">
+        <div className="bg-white rounded-2xl shadow-xl p-8 md:p-4 mb-8 ">
           {renderStep()}
         </div>
 

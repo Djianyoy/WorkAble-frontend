@@ -32,7 +32,7 @@ export function Step1() {
       <div className='bg-bl-01 rounded-full text-secondary body-semibold text-center py-1'>
         Pertanyaan {currentStep}
       </div>
-      <div className="">
+      <div>
         <h2 className="h2-bold text-[#252525] mb-2">
           Siapa nama kamu?
         </h2>
