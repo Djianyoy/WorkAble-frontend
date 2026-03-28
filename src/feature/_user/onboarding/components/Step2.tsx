@@ -1,4 +1,3 @@
-// components/onboarding/Step2.tsx
 'use client'
 
 import { useForm } from 'react-hook-form'

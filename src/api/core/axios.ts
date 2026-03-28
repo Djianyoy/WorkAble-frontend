@@ -5,6 +5,7 @@ const api = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true',
   },
   withCredentials: true, 
 })
@@ -13,25 +14,12 @@ let accessToken: string | null = null
 
 export const setAccessToken = (token: string | null) => {
   accessToken = token
-  console.log('Access token updated:', token ? 'Set' : 'Cleared')
 }
 
 export const getAccessToken = () => accessToken
 
 const clearAuthAndRedirect = (reason: string = 'expired') => {
   setAccessToken(null)
-  
-  // // Clear localStorage
-  // if (typeof window !== 'undefined') {
-  //   localStorage.removeItem('user')
-  //   localStorage.removeItem('access_token')
-  //   // Clear semua data auth lainnya jika ada
-  //   Object.keys(localStorage).forEach(key => {
-  //     if (key.startsWith('auth_') || key.startsWith('user_')) {
-  //       localStorage.removeItem(key)
-  //     }
-  //   })
-  // }
   
   if (typeof window !== 'undefined') {
     sessionStorage.clear()
@@ -135,8 +123,6 @@ api.interceptors.response.use(
       isRefreshing = true
 
       try {
-        console.log('Refreshing access token...')
-
         const response = await axios.post<RefreshTokenResponse>(
           `${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`,
           {},
@@ -154,6 +140,7 @@ api.interceptors.response.use(
         await fetch('/api/auth/refresh', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
           body: JSON.stringify({ access_token }),
         }).catch(() => {
           console.log('Session API route not available')
@@ -182,7 +169,7 @@ api.interceptors.response.use(
         isRefreshing = false
       }
     }
-
+  
     if (error.response?.status === 403) {
       console.error('Access forbidden')
     }
