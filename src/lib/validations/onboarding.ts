@@ -40,6 +40,10 @@ export const step8Schema = z.object({
   caraKomunikasi: z.string().min(1, 'Cara komunikasi wajib dipilih'),
 })
 
+export const step9Schema = z.object({
+  lingkunganKerja: z.array(z.string()).min(1, 'Pilih setidaknya satu opsi ideal buatmu'),
+})
+
 export const completeOnboardingSchema = z.object({
   fullName: step1Schema.shape.fullName,
   age: step2Schema.shape.age,
@@ -49,6 +53,7 @@ export const completeOnboardingSchema = z.object({
   tipePekerjaan: step6Schema.shape.tipePekerjaan,
   statusKerja: step7Schema.shape.statusKerja,
   caraKomunikasi: step8Schema.shape.caraKomunikasi,
+  lingkunganKerja: step9Schema.shape.lingkunganKerja,
 })
 
 export type Step1Data = z.infer<typeof step1Schema>
@@ -59,4 +64,5 @@ export type Step5Data = z.infer<typeof step5Schema>
 export type Step6Data = z.infer<typeof step6Schema>
 export type Step7Data = z.infer<typeof step7Schema>
 export type Step8Data = z.infer<typeof step8Schema>
+export type Step9Data = z.infer<typeof step9Schema>
 export type CompleteOnboardingData = z.infer<typeof completeOnboardingSchema>
