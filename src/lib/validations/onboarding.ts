@@ -1,3 +1,4 @@
+import { X } from 'lucide-react'
 import { z } from 'zod'
 
 export const step1Schema = z.object({
@@ -19,13 +20,19 @@ export const step3Schema = z.object({
   city: z.string().min(1, 'Kota wajib diisi'),
 })
 
+export const step4Schema = z.object({
+  pendidikanTerakhir: z.string().min(1, 'Pendidikan terakhir wajib dipilih'),
+})
+
 export const completeOnboardingSchema = z.object({
   fullName: step1Schema.shape.fullName,
   age: step2Schema.shape.age,
   city: step3Schema.shape.city,
+  pendidikanTerakhir: step4Schema.shape.pendidikanTerakhir,
 })
 
 export type Step1Data = z.infer<typeof step1Schema>
 export type Step2Data = z.infer<typeof step2Schema>
 export type Step3Data = z.infer<typeof step3Schema>
+export type Step4Data = z.infer<typeof step4Schema>
 export type CompleteOnboardingData = z.infer<typeof completeOnboardingSchema>
