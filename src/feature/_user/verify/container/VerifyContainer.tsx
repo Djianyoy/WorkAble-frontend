@@ -31,14 +31,13 @@ export default function VerifyPage() {
             
             console.log('Registration successful:', response)
 
-            showToast({
+            setTimeout(() => {
+                showToast({
                 type: 'success',
                 title: 'Registrasi berhasil',
                 message: 'Selamat datang di WorkAble!',
-            })
-
-            setTimeout(() => {
-                router.push("/onboarding");
+            });
+            router.push("/login");
             }, 3000);
             return;
         }
