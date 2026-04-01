@@ -2,6 +2,7 @@ import CaraKerjaContainer from '@/feature/home/caraKerja/container/CaraKerjaCont
 import Hero from '@/feature/home/hero/components/Hero'
 import MengapaContainer from '@/feature/home/mengapa/container/MengapaContainer'
 import MitraContainer from '@/feature/home/mitra/container/MitraContainer'
+import MarqueePerusahaan from '@/feature/home/perusahaan/container/MarqueePerusahaan'
 import Footer from '@/shared/components/Footer'
 import Navbar from '@/shared/components/Navbar'
 import React from 'react'
@@ -16,6 +17,10 @@ const Page = () => {
 
       <section id='caraKerja'>
         <CaraKerjaContainer/>
+      </section>
+
+      <section id='mitra'>
+          <MarqueePerusahaan/>
       </section>
 
       <section id='mitra'>
