@@ -19,7 +19,7 @@ export default function RootLayout({
 
     <html lang="en">
       <body
-        className={`${poppins.variable} ${inter.variable}  antialiased`}
+        className={`${poppins.variable} ${inter.variable} antialiased`}
       >
         <Script src="https://cdn.userway.org/widget.js" data-account="nxbubKAjQO" strategy="afterInteractive"/>
         <ToastProvider>{children}</ToastProvider>
