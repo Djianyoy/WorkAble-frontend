@@ -1,11 +1,11 @@
 import VerifyContainer from "@/feature/_user/verify/container/VerifyContainer";
-import React from "react";
+import React, { Suspense } from "react";
 
 const page = () => {
   return (
-    <>
-    <VerifyContainer/>
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyContainer />
+    </Suspense>
   )
 }
 
