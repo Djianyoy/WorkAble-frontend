@@ -87,7 +87,7 @@ export function Step10() {
             </Button>
 
             <Button type="submit" variant={"lanjut"} size="lg" className='w-full'>
-                Lanjut
+                Selesai
             </Button>
         </div> 
     </form>

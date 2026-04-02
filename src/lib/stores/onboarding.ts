@@ -71,6 +71,8 @@ export const useOnboardingStore = create<OnboardingStore>()(
             return !!data.caraKomunikasi
           case 9:
             return !!(data.lingkunganKerja && data.lingkunganKerja.length > 0)
+          case 10:
+            return !!data.bantuan
           default:
             return false
         }
