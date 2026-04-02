@@ -2,22 +2,25 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { step2Schema, type Step2Data } from '@/lib/validations/onboarding'
+import { step5Schema, type Step5Data } from '@/lib/validations/onboarding'
 import { useOnboardingStore } from '@/lib/stores/onboarding'
 import { Button } from '@/components/ui/atoms/button'
 import { FormField } from '@/components/ui/molecules/form'
+import { number } from 'zod'
 
 
-const AGE_OPTIONS = [
-  'Kurang dari 18',
-  '18-24',
-  '25-30',
-  '31-35',
-  '35+',
+const BIDANG_OPTIONS = [
+  'Teknologi & IT',
+  'Administrasi & Keuangan',
+  'Kesehatan',
+  'Desain & Kreatif',
+  'Pendidikan',
+  'Perdagangan & Ritel',
+  'Lainnya',
 ]
 
 
-export function Step2() {
+export function Step5() {
   const { data, updateData, currentStep, nextStep, prevStep } = useOnboardingStore()
 
   const {
@@ -25,19 +28,19 @@ export function Step2() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Step2Data>({
-    resolver: zodResolver(step2Schema),
+  } = useForm<Step5Data>({
+    resolver: zodResolver(step5Schema),
     mode: "onChange",
     defaultValues: {
-      age: data.age || '',
+      job_field: data.job_field || '',
     },
   })
 
-  const selectedAge = watch('age')
+  const selectedBidang = watch('job_field')
 
-  const isValid = !!selectedAge
+  const isValid = !!selectedBidang
 
-  const onSubmit = (formData: Step2Data) => {
+  const onSubmit = (formData: Step5Data) => {
     updateData(formData)
     nextStep()
   }
@@ -49,33 +52,33 @@ export function Step2() {
       </div>
       <div>
         <h2 className="h2-bold text-[#252525] mb-2">
-          Berapa usiamu?
+          Bidang kerja apa yang paling kamu minati?
         </h2>
         <p className="text-[#757575] body-regular whitespace-normal">
-          Ini membantu kami memberikan rekomendasi yang lebih relevan.
+          Pilih satu bidang yang paling sesuai dengan minat dan keahlianmu.
         </p>
       </div>
 
-      <FormField error={errors.age?.message}>
-        <div className="grid gap-3">
-          {AGE_OPTIONS.map((option) => (
+      <FormField error={errors.job_field?.message}>
+        <div className="grid grid-cols-2 gap-3">
+          {BIDANG_OPTIONS.map((option) => (
             <button
               key={option}
               type="button"
               onClick={() =>
                 setValue(
-                    'age',
-                    selectedAge === option ? '' : option,
+                    'job_field',
+                    selectedBidang === option ? '' : option,
                     { shouldValidate: true }
                 )
                 }
               className={`p-4 rounded-lg border-2 transition-all font-medium ${
-                selectedAge === option
+                selectedBidang === option
                   ? 'border-primary bg-primary/5 text-primary'
                   : 'border-gray-200 hover:border-gray-300 text-gray-700'
               }`}
             >
-              {option} tahun
+              {option}
             </button>
           ))}
         </div>

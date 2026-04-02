@@ -2,22 +2,22 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { step2Schema, type Step2Data } from '@/lib/validations/onboarding'
+import { step7Schema, type Step7Data } from '@/lib/validations/onboarding'
 import { useOnboardingStore } from '@/lib/stores/onboarding'
 import { Button } from '@/components/ui/atoms/button'
 import { FormField } from '@/components/ui/molecules/form'
+import { number } from 'zod'
 
 
-const AGE_OPTIONS = [
-  'Kurang dari 18',
-  '18-24',
-  '25-30',
-  '31-35',
-  '35+',
+const STATUS_OPTIONS = [
+  'Masih kuliah',
+  'Fresh Graduate',
+  'Sedang mencari kerja',
+  'Sudah bekerja',
 ]
 
 
-export function Step2() {
+export function Step7() {
   const { data, updateData, currentStep, nextStep, prevStep } = useOnboardingStore()
 
   const {
@@ -25,19 +25,19 @@ export function Step2() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Step2Data>({
-    resolver: zodResolver(step2Schema),
+  } = useForm<Step7Data>({
+    resolver: zodResolver(step7Schema),
     mode: "onChange",
     defaultValues: {
-      age: data.age || '',
+      status: data.status || '',
     },
   })
 
-  const selectedAge = watch('age')
+  const selectedStatus = watch('status')
 
-  const isValid = !!selectedAge
+  const isValid = !!selectedStatus
 
-  const onSubmit = (formData: Step2Data) => {
+  const onSubmit = (formData: Step7Data) => {
     updateData(formData)
     nextStep()
   }
@@ -49,33 +49,33 @@ export function Step2() {
       </div>
       <div>
         <h2 className="h2-bold text-[#252525] mb-2">
-          Berapa usiamu?
+          Apa status kamu saat ini?
         </h2>
         <p className="text-[#757575] body-regular whitespace-normal">
-          Ini membantu kami memberikan rekomendasi yang lebih relevan.
+          Ini membantu kami memahami kebutuhan dan urgensi pencarianmu.
         </p>
       </div>
 
-      <FormField error={errors.age?.message}>
+      <FormField error={errors.status?.message}>
         <div className="grid gap-3">
-          {AGE_OPTIONS.map((option) => (
+          {STATUS_OPTIONS.map((option) => (
             <button
               key={option}
               type="button"
               onClick={() =>
                 setValue(
-                    'age',
-                    selectedAge === option ? '' : option,
+                    'status',
+                    selectedStatus === option ? '' : option,
                     { shouldValidate: true }
                 )
                 }
               className={`p-4 rounded-lg border-2 transition-all font-medium ${
-                selectedAge === option
+                selectedStatus === option
                   ? 'border-primary bg-primary/5 text-primary'
                   : 'border-gray-200 hover:border-gray-300 text-gray-700'
               }`}
             >
-              {option} tahun
+              {option}
             </button>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { CompleteOnboardingData } from '@/lib/validations/onboarding'
+import { onboardingService } from '@/api/services/onboarding'
 
 interface OnboardingStore {
   currentStep: number
@@ -14,7 +15,7 @@ interface OnboardingStore {
   resetOnboarding: () => void
   
   isStepCompleted: (step: number) => boolean
-  getProgress: () => number
+  submitOnboarding: () => Promise<{ success: boolean; error?: string }>
 }
 
 export const useOnboardingStore = create<OnboardingStore>()(
@@ -27,9 +28,9 @@ export const useOnboardingStore = create<OnboardingStore>()(
       
       nextStep: () => {
         const { currentStep } = get()
-        if (currentStep < 6) {
+        if (currentStep < 11) {
           set({ currentStep: currentStep + 1 })
-        }
+        } 
       },
       
       prevStep: () => {
@@ -54,20 +55,41 @@ export const useOnboardingStore = create<OnboardingStore>()(
         
         switch (step) {
           case 1:
-            return !!data.fullName
+            return !!data.name
           case 2:
             return !!data.age
           case 3:
             return !!data.city
+          case 4:
+            return !!data.education
+          case 5:
+            return !!data.job_field
+          case 6:
+            return !!data.job_type
+          case 7:
+            return !!data.status
+          case 8:
+            return !!data.communication_preference
+          case 9:
+            return !!(data.work_environment && data.work_environment.length > 0)
+          case 10:
+            return !!data.special_needs
           default:
             return false
         }
       },
-      
-      getProgress: () => {
-        const { currentStep } = get()
-        return (currentStep / 6) * 100
+
+      submitOnboarding: async () => {
+        const { data } = get()
+        try {
+          await onboardingService.submit(data as CompleteOnboardingData)
+          get().resetOnboarding()
+          return { success: true }
+        } catch (error) {
+          return { success: false, error: error instanceof Error ? error.message : 'Gagal submit onboarding' }
+        }
       },
+
     }),
     {
       name: 'onboarding-storage', 

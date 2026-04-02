@@ -2,22 +2,21 @@
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { step2Schema, type Step2Data } from '@/lib/validations/onboarding'
+import { step6Schema, type Step6Data } from '@/lib/validations/onboarding'
 import { useOnboardingStore } from '@/lib/stores/onboarding'
 import { Button } from '@/components/ui/atoms/button'
 import { FormField } from '@/components/ui/molecules/form'
+import { number } from 'zod'
 
 
-const AGE_OPTIONS = [
-  'Kurang dari 18',
-  '18-24',
-  '25-30',
-  '31-35',
-  '35+',
+const TIPE_OPTIONS = [
+  'Remote Penuh',
+  'Hybrid',
+  'Onsite',
 ]
 
 
-export function Step2() {
+export function Step6() {
   const { data, updateData, currentStep, nextStep, prevStep } = useOnboardingStore()
 
   const {
@@ -25,19 +24,19 @@ export function Step2() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Step2Data>({
-    resolver: zodResolver(step2Schema),
+  } = useForm<Step6Data>({
+    resolver: zodResolver(step6Schema),
     mode: "onChange",
     defaultValues: {
-      age: data.age || '',
+      job_type: data.job_type || '',
     },
   })
 
-  const selectedAge = watch('age')
+  const selectedTipe = watch('job_type')
 
-  const isValid = !!selectedAge
+  const isValid = !!selectedTipe
 
-  const onSubmit = (formData: Step2Data) => {
+  const onSubmit = (formData: Step6Data) => {
     updateData(formData)
     nextStep()
   }
@@ -49,33 +48,33 @@ export function Step2() {
       </div>
       <div>
         <h2 className="h2-bold text-[#252525] mb-2">
-          Berapa usiamu?
+          Tipe pekerjaan seperti apa yang kamu inginkan?
         </h2>
         <p className="text-[#757575] body-regular whitespace-normal">
-          Ini membantu kami memberikan rekomendasi yang lebih relevan.
+          Ini akan menjadi filter utama saat mencari lowongan.
         </p>
       </div>
 
-      <FormField error={errors.age?.message}>
+      <FormField error={errors.job_type?.message}>
         <div className="grid gap-3">
-          {AGE_OPTIONS.map((option) => (
+          {TIPE_OPTIONS.map((option) => (
             <button
               key={option}
               type="button"
               onClick={() =>
                 setValue(
-                    'age',
-                    selectedAge === option ? '' : option,
+                    'job_type',
+                    selectedTipe === option ? '' : option,
                     { shouldValidate: true }
                 )
                 }
               className={`p-4 rounded-lg border-2 transition-all font-medium ${
-                selectedAge === option
+                selectedTipe === option
                   ? 'border-primary bg-primary/5 text-primary'
                   : 'border-gray-200 hover:border-gray-300 text-gray-700'
               }`}
             >
-              {option} tahun
+              {option}
             </button>
           ))}
         </div>
