@@ -1,7 +1,4 @@
 import React from "react"
-import JobCard from "@/shared/components/JobCard"
-import { jobCardData } from "../data/jobCardData"
-import { Plus } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/atoms/button"
 

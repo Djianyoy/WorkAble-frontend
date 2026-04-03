@@ -9,10 +9,15 @@ const CareerMappingCard = ({ data }: { data: CareerMappingData }) => {
   return (
     <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
       <h2 className="text-xl font-semibold">Career Mapping</h2>
-      <div className="mt-3 rounded-xl border border-indigo-100 bg-indigo-50 p-3">
-        <p className="text-sm font-semibold text-indigo-700">Rekomendasi Utama</p>
-        <p className="text-2xl font-bold text-indigo-900">{data.rekomendasiUtama}</p>
-        <p className="text-sm text-indigo-600">{data.score} poin</p>
+      <div className="mt-3 rounded-xl flex justify-between items-center border border-indigo-100 bg-[#00264E] p-3">
+        <div className="space-y-2">
+          <p className="text-sm font-semibold text-white">Rekomendasi Utama</p>
+          <p className="h3-bold text-white">{data.rekomendasiUtama}</p> 
+        </div>
+        <div className="">
+          <p className="h3-bold text-[#FF7300]">{data.score} </p>
+          <p className="caption-regular text-white">poin</p>
+        </div>
       </div>
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">

@@ -1,5 +1,5 @@
-export interface HomeData {
-    data: {
+export interface HomeResponse {
+   data: {
         greeting: {
             name: string
             timestamp: string
@@ -8,10 +8,6 @@ export interface HomeData {
         job_recommendation: null
         career_mapping: null
     }
-}
-
-export interface HomeResponse {
-    data: HomeData
     success: boolean
     message: string
 }

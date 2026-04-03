@@ -28,7 +28,7 @@ const FilterPekerjaan = () => {
             </button>
 
             {isDropdownOpen && (
-                <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                <div className="absolute top-28 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
                     <div className="p-4 space-y-2">
                         <p className="text-sm font-medium hover:bg-gray-100 px-2 py-1 rounded cursor-pointer">Bekasi</p>
                         <p className="text-sm font-medium hover:bg-gray-100 px-2 py-1 rounded cursor-pointer">Jakarta</p>

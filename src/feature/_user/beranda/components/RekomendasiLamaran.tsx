@@ -1,10 +1,29 @@
-import React from "react"
+"use client"
+
+import React, { useEffect } from "react"
 import JobCard from "@/shared/components/JobCard"
-import { jobCardData } from "../data/jobCardData"
 import { Plus } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
+import { Job } from "@/shared/types/job"
+import { JobService } from "@/api/services/job"
 
 const RekomendasiLamaran = () => {
+  const [job, setJob] = useState<Job[]>([]);
+
+  useEffect(() => {
+    const fetchJob = async () => {
+      try {
+        const { data } = await JobService.getJob();
+        setJob(data.data);
+      } catch (error) {
+        console.error("Error fetching job:", error);
+      }
+    }
+    fetchJob();
+  }, [])
+
+
   return (
     <div className="bg-white w-full p-4 border border-[#D9D9D9] rounded-3xl space-y-4">
         <div className="flex justify-between items-center">
@@ -20,7 +39,7 @@ const RekomendasiLamaran = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-          {jobCardData.slice(0, 6).map((job) => (
+          {job.slice(0, 6).map((job: Job) => (
             <JobCard key={job.id} job={job} />
           ))}
         </div>
