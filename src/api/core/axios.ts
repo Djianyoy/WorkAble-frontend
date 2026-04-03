@@ -11,11 +11,20 @@ const api = axios.create({
 
 let accessToken: string | null = null
 
-export const setAccessToken = (token: string | null) => {
-  accessToken = token
+export const setAccessToken = (token: string ) => {
+  // accessToken = token
+  if (typeof window !== 'undefined') {
+    sessionStorage.setItem('access_token', token);
+  }
 }
 
-export const getAccessToken = () => accessToken
+// export const getAccessToken = () => accessToken
+export const getAccessToken = () => {
+  if (typeof window !== 'undefined') {
+    return sessionStorage.getItem('access_token');
+  }
+  return null;
+};
 
 
 api.interceptors.request.use(
@@ -53,7 +62,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       }
       catch (refreshError) {
-        setAccessToken(null);
+        setAccessToken("");
         console.error('Refresh token failed:', refreshError);
         return Promise.reject(refreshError);
       }

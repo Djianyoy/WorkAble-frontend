@@ -11,7 +11,7 @@ export interface HomeData {
 }
 
 export interface HomeResponse {
-    data: HomeData[]
+    data: HomeData
     success: boolean
     message: string
 }

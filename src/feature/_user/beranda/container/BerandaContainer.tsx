@@ -2,6 +2,10 @@ import React from 'react'
 import HeaderBeranda from '../components/HeaderBeranda'
 import RekomendasiLamaran from '../components/RekomendasiLamaran'
 import LamaranBeranda from '../components/LamaranBeranda'
+import CareerMappingBeranda from '../components/CareerMappingBeranda'
+import { ArrowRightFromLine } from 'lucide-react'
+import { Button } from '@/components/ui/atoms/button'
+import Link from 'next/link'
 
 const BerandaContainer = () => {
   return (
@@ -13,8 +17,15 @@ const BerandaContainer = () => {
               <RekomendasiLamaran/>
             </div>
 
-            <div className='w-full lg:w-[35%] mt-8 lg:mt-0'>
+            <div className='w-full lg:w-[35%] mt-8 lg:mt-0 space-y-8'>
+              <CareerMappingBeranda/>
               <LamaranBeranda/>
+              <Link href="/onboarding">
+                  <Button variant={"lanjut"} size={"lg"}>
+                      Mulai Onboarding 
+                      <ArrowRightFromLine/>
+                  </Button>
+              </Link>
             </div>
           </div>
         </div>

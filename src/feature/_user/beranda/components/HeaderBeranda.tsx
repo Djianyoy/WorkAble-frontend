@@ -1,17 +1,45 @@
 'use client'
 
-import React, { useEffect } from 'react'
-import { useHomeStore } from '@/lib/stores/home'
+import React, { useEffect, useState } from 'react'
+import { formatDate } from '@/shared/utils/formatDate'
+import { homeService } from '@/api/services/home'
+import { useToast } from '@/shared/context/ToastContext'
 
 const HeaderBeranda = () => {
-    const { home, isLoading, error, loadHome } = useHomeStore()
+    const [home, setHome] = useState({
+        greeting: {
+            name: '',
+            timestamp: '',
+            avatar_url: '',
+        },
+        job_recommendation: null,
+        career_mapping: null,
+    })
+    const [isLoading, setIsLoading] = useState(true)
+    const { showToast } = useToast()
 
     useEffect(() => {
-        loadHome()
-    }, [loadHome])
+        const fetchHome = async () => {
+            try {
+                const response = await homeService.getHome()
+                setHome(response.data.data)
+            } catch (error) {
+                showToast({
+                    type: 'error',
+                    title: 'Gagal memuat data',
+                    message: 'Terjadi kesalahan saat memuat data',
+                })
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchHome()
+    }, [])
 
-    if(isLoading) return <div>Loading...</div>
-    if(error) return <div>Error: {error}</div>
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
   return (
     <div className='flex flex-col gap-8'>
         <div className='flex flex-col md:flex-row items-start md:items-center justify-between gap-4'>
@@ -21,7 +49,7 @@ const HeaderBeranda = () => {
                         Selamat Datang, 
                     </h3>
                     <p className='h3-bold text-2xl md:text-[32px]'>
-                        
+                        {home?.greeting?.name || 'User'}
                     </p>
                 </div>
                 <p className='caption-regular mt-1 md:mt-0'>
@@ -30,7 +58,7 @@ const HeaderBeranda = () => {
             </div>
             <div className='bg-white px-4 py-2 flex items-center justify-center border-2 border-[#D9D9D9] rounded-full w-full md:w-auto mt-4 md:mt-0'>
                 <p className='caption-regular'>
-                    Selasa, 10 Maret 2026
+                    {formatDate(home?.greeting?.timestamp)}
                 </p>
             </div>
         </div>
