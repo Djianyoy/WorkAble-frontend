@@ -1,5 +1,4 @@
 import React from 'react'
-import { langkahKerjaData } from '../data/langkahKerjaData'
 import { TLangkahKerja } from '../types/TLangkahKerja'
 
 interface LangkahKerjaProps {

@@ -7,7 +7,8 @@ import { ToastProvider } from "@/shared/context/ToastContext";
 
 export const metadata: Metadata = {
   title: "WorkAble",
-  description: "Opportunities for everyone",
+  description: "Opportunities for everyone - Kami percaya semua orang berhak mendapatkan kesempatan",
+  keywords: ["WorkAble", "Opportunities for everyone", "Kami percaya semua orang berhak mendapatkan kesempatan"],
 };
 
 export default function RootLayout({

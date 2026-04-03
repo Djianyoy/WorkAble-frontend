@@ -3,7 +3,6 @@
 import { ArrowDownIcon, ChevronDown, Home, Hotel, Hourglass, HouseHeart, HousePlug, HousePlus, HouseWifi, LogOut, LogOutIcon, LucideHome } from 'lucide-react'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import SearchBar from './SearchBar'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useAuth } from '@/feature/_user/auth/hooks/useAuth'

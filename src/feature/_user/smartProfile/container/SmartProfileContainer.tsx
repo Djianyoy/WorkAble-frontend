@@ -5,8 +5,6 @@ import SkillsCard from '@/feature/_user/smartProfile/components/SkillsCard'
 import ExperienceCard from '@/feature/_user/smartProfile/components/ExperienceCard'
 import CommunicationCard from '@/feature/_user/smartProfile/components/CommunicationCard'
 import CVChecker from '../components/CVChecker'
-import SideLayout from './SideBarSmartProfile'
-import SideBarSmartProfile from './SideBarSmartProfile'
 
 const SmartProfileContainer = () => {
 

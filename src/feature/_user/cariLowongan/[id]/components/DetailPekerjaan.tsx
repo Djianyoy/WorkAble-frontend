@@ -1,8 +1,7 @@
 "use client"
 
 import { JobService } from "@/api/services/job";
-import { Job, JobDetail } from "@/shared/types/job";
-import { LocateIcon, LocationEdit, LocationEditIcon, MapPlus } from "lucide-react"
+import { JobDetail } from "@/shared/types/job";
 import Image from "next/image"
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";

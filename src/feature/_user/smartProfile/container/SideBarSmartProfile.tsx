@@ -1,6 +1,5 @@
 "use client"
 
-import { LogOutIcon } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "../../auth/hooks/useAuth";
 import { Button } from "@/components/ui/atoms/button";

@@ -1,6 +1,5 @@
 "use client"
 
-import { ArrowDownIcon, ChevronDown } from 'lucide-react'
 import { useOnboardingStore } from '@/lib/stores/onboarding'
 import { TOTAL_STEPS } from '@/feature/_user/onboarding/container/OnboardingContainer'
 import Image from 'next/image'

@@ -4,86 +4,9 @@ import { useState } from 'react'
 import { AplikasiDetail } from '../components/AplikasiDetail'
 import { RekomendasiCard } from '../components/RekomendasiCard'
 import { AplikasiCard } from '../components/AplikasiCard'
+import { TabType } from '@/shared/types/lamaran'
+import { DUMMY_APPLICATIONS, RECOMMENDATIONS } from '../data/lamaranData'
 
-type TabType = 'terkirim' | 'diproses' | 'interview' | 'ditolak'
-
-interface Application {
-  id: string
-  position: string
-  company: string
-  workType: 'Remote' | 'On-site' | 'Hybrid'
-  employmentType: 'Full - time' | 'Part - time' | 'Contract'
-  status: {
-    sent: boolean
-    hrReviewed: boolean
-    interview: boolean
-    offering: boolean
-    selected: boolean
-  }
-  interviewScheduled: boolean
-  interviewDate?: string
-  rejectionDate?: string
-  appliedDate: string
-}
-
-const DUMMY_APPLICATIONS: Application[] = [
-  {
-    id: '1',
-    position: 'UI/UX Designer',
-    company: 'Tokopedia',
-    workType: 'Remote',
-    employmentType: 'Full - time',
-    status: {
-      sent: true,
-      hrReviewed: false,
-      interview: false,
-      offering: false,
-      selected: false,
-    },
-    interviewScheduled: false,
-    appliedDate: '10 Maret 2026',
-  },
-  {
-    id: '2',
-    position: 'UI/UX Designer',
-    company: 'Tokopedia',
-    workType: 'Remote',
-    employmentType: 'Full - time',
-    status: {
-      sent: true,
-      hrReviewed: true,
-      interview: false,
-      offering: false,
-      selected: false,
-    },
-    interviewScheduled: false,
-    appliedDate: '10 Maret 2026',
-  },
-  {
-    id: '3',
-    position: 'UI/UX Designer',
-    company: 'Tokopedia',
-    workType: 'Remote',
-    employmentType: 'Full - time',
-    status: {
-      sent: true,
-      hrReviewed: true,
-      interview: true,
-      offering: false,
-      selected: false,
-    },
-    interviewScheduled: true,
-    interviewDate: '16 Maret 2026',
-    appliedDate: '10 Maret 2026',
-  },
-]
-
-const RECOMMENDATIONS = [
-  { id: '1', company: 'Gojek', type: 'Aksesibilitas' },
-  { id: '2', company: 'Gojek', type: 'Aksesibilitas' },
-  { id: '3', company: 'Gojek', type: 'Aksesibilitas' },
-  { id: '4', company: 'Gojek', type: 'Aksesibilitas' },
-]
 
 export default function LamaranContainer() {
   const [activeTab, setActiveTab] = useState<TabType>('terkirim')

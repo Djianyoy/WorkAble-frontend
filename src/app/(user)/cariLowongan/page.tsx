@@ -1,4 +1,3 @@
-import React from 'react'
 import CariLowonganContainer from '@/feature/_user/cariLowongan/container/CariLowonganContainer'
 
 const page = () => {
