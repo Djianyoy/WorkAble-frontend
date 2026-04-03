@@ -52,7 +52,7 @@ export default function OnboardingContainer() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50">
-      <div className="max-w-sm md:max-w-xl mx-auto my-34">
+      <div className="max-w-sm md:max-w-2xl mx-auto my-34">
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-4 mb-8 ">
           {renderStep()}
         </div>

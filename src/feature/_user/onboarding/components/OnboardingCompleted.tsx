@@ -48,16 +48,16 @@ const OnboardingCompleted = () => {
           </p>
 
           <div className='grid grid-cols-2 md:grid-cols-4 items-center justify-center gap-4'>
-            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary caption-semibold text-center py-2 px-4'>
+            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary text-sm font-semibold text-center py-2 px-4'>
               {data.job_field}
             </div>
-            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary caption-semibold text-center py-2 px-4'>
+            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary text-sm font-semibold text-center py-2 px-4'>
               {data.job_type}
             </div>
-            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary caption-semibold text-center py-2 px-4'>
+            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary text-sm font-semibold text-center py-2 px-4'>
               {data.communication_preference}
             </div>
-            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary caption-semibold text-center py-2 px-4'>
+            <div className='bg-transparent rounded-full border-3 border-secondary text-secondary text-sm font-semibold text-center py-2 px-4'>
               {data.city}
             </div>
           </div>

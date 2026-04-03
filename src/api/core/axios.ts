@@ -9,13 +9,25 @@ const api = axios.create({
   withCredentials: true, 
 })
 
-let accessToken: string | null = null
+// let accessToken: string | null = null
 
 export const setAccessToken = (token: string | null) => {
-  accessToken = token
+  if (typeof window !== 'undefined') {
+    if (token) {
+      sessionStorage.setItem('access_token', token);
+    } else {
+      sessionStorage.removeItem('access_token');
+    }
+  }
 }
 
-export const getAccessToken = () => accessToken
+// export const getAccessToken = () => accessToken
+export const getAccessToken = () => {
+  if (typeof window !== 'undefined') {
+    return sessionStorage.getItem('access_token');
+  }
+  return null;
+};
 
 
 api.interceptors.request.use(
@@ -43,7 +55,7 @@ api.interceptors.response.use(
       try {
         const response = await axios.post(`/api/auth/refresh`, { withCredentials: true })
 
-        const refreshToken = response.data.access_token;
+        const refreshToken = response.data.data.access_token;
         setAccessToken(refreshToken);
 
         if(originalRequest.headers){
@@ -53,7 +65,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       }
       catch (refreshError) {
-        setAccessToken(null);
+        setAccessToken("");
         console.error('Refresh token failed:', refreshError);
         return Promise.reject(refreshError);
       }
