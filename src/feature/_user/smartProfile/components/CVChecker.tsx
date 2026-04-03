@@ -1,5 +1,3 @@
-
-
 const CVChecker = () => {
     return (
         <div className="space-y-4">

@@ -1,24 +1,7 @@
 'use client'
 
-interface ApplicationStatus {
-  sent: boolean
-  hrReviewed: boolean
-  interview: boolean
-  offering: boolean
-  selected: boolean
-}
+import { Application } from "@/shared/types/lamaran"
 
-interface Application {
-  id: string
-  position: string
-  company: string
-  workType: 'Remote' | 'On-site' | 'Hybrid'
-  employmentType: 'Full - time' | 'Part - time' | 'Contract'
-  status: ApplicationStatus
-  interviewScheduled: boolean
-  interviewDate?: string
-  appliedDate: string
-}
 
 interface Props {
   application: Application

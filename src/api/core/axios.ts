@@ -9,7 +9,6 @@ const api = axios.create({
   withCredentials: true, 
 })
 
-// let accessToken: string | null = null
 
 export const setAccessToken = (token: string | null) => {
   if (typeof window !== 'undefined') {
@@ -21,7 +20,6 @@ export const setAccessToken = (token: string | null) => {
   }
 }
 
-// export const getAccessToken = () => accessToken
 export const getAccessToken = () => {
   if (typeof window !== 'undefined') {
     return sessionStorage.getItem('access_token');

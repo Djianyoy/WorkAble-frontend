@@ -1,25 +1,44 @@
-import { LocateIcon, LocationEdit, LocationEditIcon, MapPlus } from "lucide-react"
+"use client"
+
+import { JobService } from "@/api/services/job";
+import { JobDetail } from "@/shared/types/job";
 import Image from "next/image"
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 
 const DetailPekerjaan = () => {
+    const { id } = useParams();
+    const [job, setJob] = useState<JobDetail | null>(null);
+
+    useEffect(() => {
+        const fetchJob = async () => {
+            try {
+                const response = await JobService.getJobById(id as string);
+                setJob(response.data);
+            } catch (error) {
+                console.error(error);
+            } 
+        };
+        fetchJob();
+    }, [id]);
     return (
         <div className="space-y-4">
             <div className="space-y-4">
                 <div className="flex items-center gap-2">
                     <Image
-                        src="/LogoPerusahaan.webp"
+                        src={job?.company_logo || "/LogoPerusahaan.webp"}
                         alt="Logo Company"
-                        width={100}
-                        height={100}
-                        className="w-10 h-10"
+                        width={500}
+                        height={500}
+                        className="w-18 h-18"
                     />
-                    <h4 className="title-semibold">
-                        Tokopedia
+                    <h4 className="title-semibold mt-2">
+                        {job?.company_name}
                     </h4>
                 </div>
                 <h3 className="h2-semibold">
-                    UI/UX Designer
+                    {job?.title}
                 </h3>
                 <div className="flex items-center gap-4">
                     <div className="flex items-center gap-4">
@@ -31,7 +50,7 @@ const DetailPekerjaan = () => {
                             className="w-5 h-7"
                         />
                         <p className="body-regular">
-                            Jakarta Selatan
+                            {job?.city}
                         </p>
                     </div>
                     <div className="flex items-center gap-4">
@@ -43,7 +62,7 @@ const DetailPekerjaan = () => {
                             className="w-7 h-7"
                         />
                         <p className="body-regular">
-                            5.000 - 10.000 Karyawan
+                            {job?.salary}
                         </p>
                     </div>
                     <div className="flex items-center gap-4">
@@ -66,7 +85,7 @@ const DetailPekerjaan = () => {
                         Deskripsi Pekerjaan 
                     </h6>
                     <p className="body-regular">
-                        Sebagai UI/UX Designer di Tokopedia, Anda akan bertanggung jawab untuk merancang pengalaman pengguna yang intuitif dan menarik untuk platform e-commerce kami. Anda akan bekerja sama dengan tim produk, engineering, dan marketing untuk memahami kebutuhan pengguna dan menerjemahkannya menjadi solusi desain yang inovatif.
+                        {job?.description}
                     </p>
                 </div>
                 <div className="bg-white border border-[#757575] rounded-xl p-4 space-y-4">
@@ -74,7 +93,7 @@ const DetailPekerjaan = () => {
                         Informasi Pekerjaan 
                     </h6>
                     <p className="body-regular">
-                        Sebagai UI/UX Designer di Tokopedia, Anda akan bertanggung jawab untuk merancang pengalaman pengguna yang intuitif dan menarik untuk platform e-commerce kami. Anda akan bekerja sama dengan tim produk, engineering, dan marketing untuk memahami kebutuhan pengguna dan menerjemahkannya menjadi solusi desain yang inovatif.
+                        
                     </p>
                 </div>
                 <div className="bg-white border border-[#757575] rounded-xl p-4 space-y-4">
@@ -82,7 +101,7 @@ const DetailPekerjaan = () => {
                         Kualifikasi Pekerjaan
                     </h6>
                     <p className="body-regular">
-                        Sebagai UI/UX Designer di Tokopedia, Anda akan bertanggung jawab untuk merancang pengalaman pengguna yang intuitif dan menarik untuk platform e-commerce kami. Anda akan bekerja sama dengan tim produk, engineering, dan marketing untuk memahami kebutuhan pengguna dan menerjemahkannya menjadi solusi desain yang inovatif.
+                        {job?.qualification}
                     </p>
                 </div>
                 <div className="bg-white border border-[#757575] rounded-xl p-4 space-y-4">
@@ -90,21 +109,13 @@ const DetailPekerjaan = () => {
                         Jenis Disabilitas yang tersedia
                     </h6>
                     <div className="flex items-center gap-2">
-                        <div>
-                            <p className="bg-[#FFD4B0] text-[#FF6B00] px-4 py-2 rounded-full border border-[#FF6B00]">
-                                Tunadaksa
-                            </p>
-                        </div>
-                        <div>
-                            <p className="bg-[#FFD4B0] text-[#FF6B00] px-4 py-2 rounded-full border border-[#FF6B00]">
-                                Tunarungu
-                            </p>
-                        </div>
-                        <div>
-                            <p className="bg-[#FFD4B0] text-[#FF6B00] px-4 py-2 rounded-full border border-[#FF6B00]">
-                                Akses fisik
-                            </p>
-                        </div>
+                        {job?.accepted_disability.map((disability, index) => (
+                            <div key={index} className="">
+                                <p className="bg-[#FFD4B0] text-[#FF6B00] px-4 py-2 rounded-full border border-[#FF6B00]">
+                                    {disability}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
                 

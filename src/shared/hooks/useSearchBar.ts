@@ -31,14 +31,12 @@ export function useSearchBar() {
 
   const handleClear = () => {
     setQuery('')
-    // setResults([])
     setShowResults(false)
   }
 
   return {
       query,
     setQuery,
-    // results,
     loading,
     showResults,
     setShowResults,

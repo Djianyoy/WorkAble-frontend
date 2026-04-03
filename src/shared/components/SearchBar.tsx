@@ -1,8 +1,6 @@
 "use client"
 
 import { Search, X } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
 import { useSearchBar } from '../hooks/useSearchBar'
 import { Input } from '@/components/ui/atoms/input'
 
@@ -14,9 +12,6 @@ export default function SearchBar({ onClose }: SearchBarProps) {
   const {
     query,
     setQuery,
-    loading,
-    showResults,
-    setShowResults,
     handleClear,
     searchRef,
   } = useSearchBar()

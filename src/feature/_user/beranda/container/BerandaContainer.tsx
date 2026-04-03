@@ -1,4 +1,3 @@
-import React from 'react'
 import HeaderBeranda from '../components/HeaderBeranda'
 import RekomendasiLamaran from '../components/RekomendasiLamaran'
 import LamaranBeranda from '../components/LamaranBeranda'

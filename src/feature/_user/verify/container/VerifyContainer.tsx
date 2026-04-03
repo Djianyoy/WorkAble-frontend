@@ -52,7 +52,6 @@ export default function VerifyPage() {
 
         {status === "success" && (
           <div className="space-y-4">
-            <div className="text-5xl">✅</div>
             <h1 className="text-2xl font-black text-[#005E82]">VERIFIKASI BERHASIL!</h1>
             <p className="text-gray-600">Email kamu sudah aktif. Mengalihkan ke halaman login...</p>
           </div>
@@ -60,7 +59,6 @@ export default function VerifyPage() {
 
         {status === "error" && (
           <div className="space-y-4">
-            <div className="text-5xl">❌</div>
             <h1 className="text-2xl font-black text-red-600">VERIFIKASI GAGAL</h1>
             <p className="text-gray-600">Terjadi kesalahan pada URL verifikasi.</p>
             <button 

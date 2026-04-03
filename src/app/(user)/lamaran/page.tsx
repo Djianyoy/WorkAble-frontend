@@ -1,5 +1,4 @@
 import LamaranContainer from '@/feature/_user/lamaran/container/LamaranContainer'
-import React from 'react'
 
 const page = () => {
   return (

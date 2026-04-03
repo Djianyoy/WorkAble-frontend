@@ -23,7 +23,6 @@ import { Checkbox } from '@/components/ui/atoms/checkbox'
 export default function LoginContainer() {
   const { login } = useAuth();
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [showPassword, setShowPassword] = useState(false)
   const [serverError, setServerError] = useState<string | null>(null)
   const [sessionExpired, setSessionExpired] = useState(false)

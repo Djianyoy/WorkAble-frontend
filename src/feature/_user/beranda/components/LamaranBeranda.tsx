@@ -43,7 +43,6 @@ export default function LamaranBeranda() {
           >
             <div className="flex items-center gap-3 py-2 cursor-pointer">
               
-              {/* Logo Perusahaan */}
               <div className="w-10 h-10 rounded-lg bg-green-200" />
 
               <div>

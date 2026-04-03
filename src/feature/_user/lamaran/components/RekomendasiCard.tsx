@@ -1,12 +1,7 @@
 'use client'
 
+import { Recommendation } from "@/shared/types/lamaran"
 import Image from "next/image"
-
-interface Recommendation {
-  id: string
-  company: string
-  type: string
-}
 
 interface Props {
   recommendation: Recommendation

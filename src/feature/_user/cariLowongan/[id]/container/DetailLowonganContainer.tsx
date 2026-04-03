@@ -10,7 +10,7 @@ const DetailLowonganContainer = () => {
         <section className="relative w-full mx-auto md:max-w-6xl">
             <div className="w-full min-h-screen py-34 px-4 space-y-4">
 
-                <Link href="/cari-lowongan">
+                <Link href="/cariLowongan">
                     <Button variant="black" size="default" className="border-[#757575] border">
                         <ArrowLeft/>
                         Kembali

@@ -1,25 +1,54 @@
 "use client"
 
-import { LogOutIcon } from "lucide-react"
 import Link from "next/link"
 import { useAuth } from "../../auth/hooks/useAuth";
 import { Button } from "@/components/ui/atoms/button";
+import { useEffect, useState } from "react";
+import { smartProfileService } from "@/api/services/smartProfile";
 
 
 const SideBarSmartProfile = () => {
     const { logout } = useAuth();
+    const [ name, setName] = useState<string>('')
+    const [ job, setJob] = useState<string>('')
+    const [ city, setCity] = useState<string>('')
+
+
+    useEffect(() => {
+    const fetchData = async () => {
+        try {
+        const { data } = await smartProfileService.getSmartProfile()
+
+        setName(data.personal_info.name)
+        setJob(data.career_preference.job_field)
+        setCity(data.personal_info.city)
+        } catch (error) {
+        console.error(error)
+        }
+    }
+
+    fetchData()
+    }, [])
+
+
+
     return (
-        <aside className="w-100 h-460 absolute top-0 left-0 bg-white py-40 px-8 space-y-4">
+        <aside className="hidden md:block w-100 h-425 absolute top-0 left-0 bg-white py-40 px-8 space-y-4">
             <div className="space-y-2 flex flex-col items-center">
                 <div className='w-20 h-20 rounded-full  bg-[#D9D9D9]'>
                     .
                 </div>
                 <p className="h3-semibold">
-                    Rizky Maulana
+                    {name}
                 </p>
-                <p className="body-regular">
-                    UI/UX Designer - Jakarta
-                </p>
+                <div className="flex items-center gap-2">
+                    <p className="body-regular">
+                        {job} -
+                    </p>
+                    <p className="body-regular">
+                        {city}
+                    </p>
+                </div>
 
             </div>
 

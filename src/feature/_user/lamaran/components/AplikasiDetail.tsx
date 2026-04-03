@@ -1,13 +1,6 @@
 'use client'
 
-interface Application {
-  id: string
-  position: string
-  company: string
-  workType: string
-  employmentType: string
-  interviewDate?: string
-}
+import { Application } from "@/shared/types/lamaran"
 
 interface Props {
   application: Application

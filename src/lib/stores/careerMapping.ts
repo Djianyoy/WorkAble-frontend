@@ -97,10 +97,8 @@ export const useCareerMappingStore = create<CareerMappingStore>()(
       submitCareerMapping: async () => {
         const { data } = get()
         try {
-          // Submit answers
           await careerMappingService.submitCareerMapping(data as CompleteCareerMappingData)
           
-          // Fetch result
           const resultResponse = await careerMappingService.getCareerMappingResult()
           if (resultResponse.success) {
             get().setResult(resultResponse.data)
